@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.pluu.theme.sample.databinding.FragmentDashboardBinding
+import com.pluu.theme.sample.ui.main.MainFragmentProvider
+import com.pluu.theme.sample.utils.showToast
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), MainFragmentProvider {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
@@ -34,5 +36,14 @@ class DashboardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onRestart() {
+        showToast("Restart Dashboard")
+    }
+
+    override fun onReselected() {
+        showToast("Reselected Dashboard")
+        binding.scrollView.smoothScrollTo(0, 0)
     }
 }

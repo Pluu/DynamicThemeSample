@@ -4,12 +4,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.annotation.StyleRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pluu.theme.sample.R
 import com.pluu.theme.sample.databinding.ActivityMainBinding
 import com.pluu.theme.sample.utils.ThemeHelper
@@ -33,10 +33,20 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
+        binding.navView.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications -> {
+                    (findVisibleFragment() as? MainFragmentProvider)?.onReselected()
+                }
+            }
+        }
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -49,8 +59,19 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        (findVisibleFragment() as? MainFragmentProvider)?.onRestart()
+    }
+
     override fun setTheme(resId: Int) {
         super.setTheme(resId)
         this.themeId = resId
+    }
+
+    private fun findVisibleFragment(): Fragment? {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        return navHostFragment.childFragmentManager.fragments.firstOrNull()
     }
 }

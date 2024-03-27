@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pluu.theme.sample.databinding.FragmentHomeBinding
+import com.pluu.theme.sample.ui.main.MainFragmentProvider
+import com.pluu.theme.sample.utils.showToast
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), MainFragmentProvider {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -27,5 +29,13 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onRestart() {
+        showToast("Restart Home")
+    }
+
+    override fun onReselected() {
+        showToast("Reselected Home")
     }
 }

@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pluu.theme.sample.databinding.FragmentNotificationsBinding
+import com.pluu.theme.sample.ui.main.MainFragmentProvider
 import com.pluu.theme.sample.ui.setting.SettingActivity
+import com.pluu.theme.sample.utils.showToast
 
-class NotificationsFragment : Fragment() {
+class NotificationsFragment : Fragment(), MainFragmentProvider {
 
     private var _binding: FragmentNotificationsBinding? = null
 
@@ -36,5 +38,13 @@ class NotificationsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onRestart() {
+        showToast("Restart Notifications")
+    }
+
+    override fun onReselected() {
+        showToast("Reselected Notifications")
     }
 }
