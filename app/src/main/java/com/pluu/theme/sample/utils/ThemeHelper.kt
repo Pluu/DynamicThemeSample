@@ -1,7 +1,8 @@
 package com.pluu.theme.sample.utils
 
+import android.app.Activity
 import androidx.annotation.StyleRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.pluu.theme.sample.R
 import com.pluu.theme.sample.model.Theme
 import com.pluu.theme.sample.model.Theme.Blue
@@ -12,16 +13,13 @@ import com.pluu.theme.sample.model.Theme.PurpleFromDark
 
 object ThemeHelper {
 
-    fun setTheme(activity: AppCompatActivity, theme: Theme) {
+    fun setTheme(activity: Activity, theme: Theme) {
         setTheme(activity, getTheme(theme))
     }
 
-    private fun setTheme(activity: AppCompatActivity, @StyleRes resId: Int) {
-        activity.setTheme(resId)
-    }
-
-    fun saveTheme(activity: AppCompatActivity) {
-        activity.recreate()
+    private fun setTheme(activity: Activity, @StyleRes resId: Int) {
+        (activity as ThemeProvider).themeId = resId
+        activity.theme.applyStyle(resId, true)
     }
 
     @StyleRes
@@ -35,16 +33,16 @@ object ThemeHelper {
         }
     }
 
-    fun setCorrectTheme(activity: AppCompatActivity, newTheme: Theme) {
+    fun setCorrectTheme(activity: Activity, newTheme: Theme) {
         val currentTheme = (activity as ThemeProvider).themeId
         val newThemeId = getTheme(newTheme)
         setTheme(activity, newThemeId)
         if (currentTheme != newThemeId) {
-            activity.recreate()
+            ActivityCompat.recreate(activity)
         }
     }
 }
 
 interface ThemeProvider {
-    val themeId: Int
+    var themeId: Int
 }
