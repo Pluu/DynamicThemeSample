@@ -4,30 +4,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?custom_color_background"
-    android:gravity="center"
+    android:gravity="center_vertical"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".ui.main.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textColor="?custom_color_primary"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        tools:text="TEST" />
+        android:background="?custom_color_primary"
+        android:padding="8dp"
+        android:text="Primary"
+        android:textColor="?custom_color_on_primary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="?custom_color_primary_container"
+        android:padding="8dp"
+        android:text="Primary Container"
+        android:textColor="?custom_color_on_primary_container"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnGoSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:backgroundTint="?custom_color_accent"
-        android:text="Sample"
-        android:textColor="?custom_color_primary"
+        android:backgroundTint="?custom_color_primary"
+        android:text="Change Theme"
+        android:textAllCaps="false"
+        android:textColor="?custom_color_on_primary"
         android:textSize="20sp" />
 </LinearLayout>

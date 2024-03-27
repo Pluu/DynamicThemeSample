@@ -9,12 +9,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DynamicThemeSample"
+        android:theme="@style/jingburger"
         tools:targetApi="31">
         <activity
             android:name=".ui.setting.SettingActivity"
             android:exported="false"
-            android:theme="@style/Theme.DynamicThemeSample" />
+            android:theme="@style/jingburger" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"

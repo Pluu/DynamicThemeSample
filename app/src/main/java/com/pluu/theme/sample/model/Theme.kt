@@ -5,8 +5,11 @@ package com.pluu.theme.sample.model
  */
 enum class Theme(val storageKey: String) {
     DEFAULT("default"),
-    Pluu("Pluu"),
-    PluuDark("Pluu Dark");
+    Blue("Blue"),
+    BlueFromDark("Dark Blue"),
+    Purple("Purple"),
+    PurpleFromDark("Dark Purple"),
+    ;
 
     companion object {
         fun of(ordinal: Int): Theme {
