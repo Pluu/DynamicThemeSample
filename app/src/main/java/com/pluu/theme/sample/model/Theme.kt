@@ -4,7 +4,7 @@ package com.pluu.theme.sample.model
  * Represents the available UI themes for the application
  */
 enum class Theme(val storageKey: String) {
-    DEFAULT("default"),
+    Yellow("yellow"),
     Blue("Blue"),
     BlueFromDark("Dark Blue"),
     Purple("Purple"),
@@ -12,6 +12,7 @@ enum class Theme(val storageKey: String) {
     ;
 
     companion object {
+        val Default = Yellow
         fun of(ordinal: Int): Theme {
             return Theme.entries[ordinal]
         }

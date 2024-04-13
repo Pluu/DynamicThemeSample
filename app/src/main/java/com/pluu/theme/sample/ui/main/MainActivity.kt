@@ -1,22 +1,18 @@
 package com.pluu.theme.sample.ui.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.pluu.theme.sample.R
 import com.pluu.theme.sample.databinding.ActivityMainBinding
 import com.pluu.theme.sample.ui.theme.ThemedActivity
-import com.pluu.theme.sample.utils.ThemeProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ThemedActivity(), ThemeProvider {
+class MainActivity : ThemedActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -13,9 +13,7 @@ class GetThemeUseCase @Inject constructor(
     @IoDispatcher dispatcher: CoroutineDispatcher
 ) : UseCase<Unit, Theme>(dispatcher) {
     override suspend fun execute(parameters: Unit): Theme {
-        // TODO use as flow
         val selectedTheme = preferenceStorage.selectedTheme.first()
-        return themeFromStorageKey(selectedTheme)
-            ?: Theme.DEFAULT
+        return themeFromStorageKey(selectedTheme) ?: Theme.Default
     }
 }

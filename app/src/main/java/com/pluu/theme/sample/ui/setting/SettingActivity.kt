@@ -2,7 +2,6 @@ package com.pluu.theme.sample.ui.setting
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.annotation.StyleRes
 import androidx.appcompat.app.AlertDialog
 import com.pluu.theme.sample.databinding.ActivitySettingBinding
 import com.pluu.theme.sample.model.Theme
@@ -12,9 +11,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SettingActivity : ThemedActivity() {
 
-    @StyleRes
-    override var themeId: Int = 0
-
     private lateinit var binding: ActivitySettingBinding
     private val viewModel by viewModels<SettingViewModel>()
 
@@ -23,9 +19,23 @@ class SettingActivity : ThemedActivity() {
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.fab.setOnClickListener {
+        binding.onlyCustomTheme.setOnClickListener {
+            showUseCustomTheme()
+        }
+        binding.changeTheme.setOnClickListener {
             showSelectTheme()
         }
+    }
+
+    private fun showUseCustomTheme() {
+        AlertDialog.Builder(this)
+            .setSingleChoiceItems(
+                arrayOf("Used custom theme", "Default"),
+                if (viewModel.isUsedCustomTheme) 0 else 1,
+            ) { dialogInterface, item ->
+                viewModel.setUseCustomTheme(if (item == 0) true else false)
+                dialogInterface.dismiss()
+            }.show()
     }
 
     private fun showSelectTheme() {

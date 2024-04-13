@@ -7,21 +7,29 @@
     android:background="?custom_color_background"
     android:fitsSystemWindows="true"
     android:gravity="center"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".ui.setting.SettingActivity">
 
-    <ImageButton
-        android:id="@+id/fab"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:backgroundTint="?custom_color_primary_container"
-        android:src="@android:drawable/ic_dialog_email"
-        app:tint="?custom_color_on_primary_container" />
-
     <TextView
+        android:id="@+id/onlyCustomTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="⬆ Click"
+        android:gravity="center"
+        android:text="Custom\nTheme"
         android:textColor="?custom_color_primary"
-        android:textSize="20sp" />
+        android:textSize="24sp"
+        app:drawableTint="?custom_color_on_primary_container"
+        app:drawableTopCompat="@drawable/baseline_account_tree_24" />
+
+    <TextView
+        android:id="@+id/changeTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:gravity="center"
+        android:text="Theme"
+        android:textColor="?custom_color_primary"
+        android:textSize="24sp"
+        app:drawableTint="?custom_color_on_primary_container"
+        app:drawableTopCompat="@drawable/ic_dashboard_black_24dp" />
 </LinearLayout>
