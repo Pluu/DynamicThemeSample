@@ -1,11 +1,11 @@
 [versions]
-agp = "8.4.0-beta01"
+agp = "8.4.0-rc02"
 
 activity = "1.8.2"
 datastorePreferences = "1.0.0"
 hilt = "2.51"
 kotlin = "1.9.23"
-ksp = "1.9.23-1.0.19"
+ksp = "1.9.23-1.0.20"
 core = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
