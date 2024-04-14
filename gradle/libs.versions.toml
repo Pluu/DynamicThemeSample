@@ -3,6 +3,7 @@ agp = "8.4.0-rc02"
 
 activity = "1.8.2"
 datastorePreferences = "1.0.0"
+desugar_jdk_libs = "2.0.4"
 hilt = "2.51"
 kotlin = "1.9.23"
 ksp = "1.9.23-1.0.20"
@@ -31,6 +32,7 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
