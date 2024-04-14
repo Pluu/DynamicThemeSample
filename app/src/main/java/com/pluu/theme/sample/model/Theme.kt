@@ -13,6 +13,7 @@ enum class Theme(val storageKey: String) {
 
     companion object {
         val Default = Yellow
+        val DarkDefault = PurpleFromDark
         fun of(ordinal: Int): Theme {
             return Theme.entries[ordinal]
         }

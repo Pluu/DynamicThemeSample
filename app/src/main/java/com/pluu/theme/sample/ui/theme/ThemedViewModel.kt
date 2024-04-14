@@ -6,6 +6,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ThemedViewModel @Inject constructor(
-    themedActivityDelegate: ThemedActivityDelegate,
+    private val themedActivityDelegate: ThemedActivityDelegate,
 ) : ViewModel(),
-    ThemedActivityDelegate by themedActivityDelegate
+    ThemedActivityDelegate by themedActivityDelegate {
+
+    fun refreshTheme() {
+        themedActivityDelegate.refresh()
+    }
+}

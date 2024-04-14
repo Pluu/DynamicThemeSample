@@ -37,6 +37,11 @@ abstract class ThemedActivity : AppCompatActivity() {
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        themedViewModel.refreshTheme()
+    }
+
     private fun updateTheme(newTheme: Theme) {
         val newThemeId = ThemeHelper.getTheme(newTheme)
         if (themeId != newThemeId) {
