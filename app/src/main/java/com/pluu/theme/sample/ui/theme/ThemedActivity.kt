@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.pluu.theme.sample.model.Theme
 import com.pluu.theme.sample.utils.ThemeHelper
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 abstract class ThemedActivity : AppCompatActivity() {
 
@@ -43,20 +44,17 @@ abstract class ThemedActivity : AppCompatActivity() {
     }
 
     private fun updateTheme(newTheme: Theme) {
-        val newThemeId = ThemeHelper.getTheme(newTheme)
-        if (themeId != newThemeId) {
+        val themeResId = ThemeHelper.getTheme(newTheme)
+        if (this.themeId != themeResId) {
+            Timber.d("Update theme = $newTheme")
             ActivityCompat.recreate(this)
         }
     }
 
     private fun setTheme(theme: Theme) {
+        Timber.d("Apply theme = $theme")
         val themeResId = ThemeHelper.getTheme(theme)
+        this.themeId = themeResId
         setTheme(themeResId)
-    }
-
-    override fun setTheme(resId: Int) {
-        super.setTheme(resId)
-        this.themeId = resId
-        theme.applyStyle(resId, true)
     }
 }

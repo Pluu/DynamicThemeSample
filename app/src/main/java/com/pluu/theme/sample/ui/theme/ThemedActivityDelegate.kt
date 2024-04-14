@@ -10,11 +10,11 @@ import com.pluu.theme.sample.model.Theme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.mapLatest
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.runBlocking
+import timber.log.Timber
 import java.time.LocalTime
 import javax.inject.Inject
 
@@ -44,16 +44,16 @@ class ThemedActivityDelegateImpl @Inject constructor(
         refreshSignal,
     ) { isUseCustomTheme, theme, _ ->
         findTheme(isUseCustomTheme.successOr(false), theme.successOr(Theme.Default))
-    }.stateIn(externalScope, SharingStarted.WhileSubscribed(5_000), Theme.Default)
-
-    override val isUsedCustomTheme: Boolean
-        get() = runBlocking {
-            isUseCustomThemeUseCase(Unit).successOr(false)
-        }
+    }.distinctUntilChanged()
 
     override val currentTheme: Theme
         get() = runBlocking {
             findTheme(isUsedCustomTheme, getThemeUseCase(Unit).successOr(Theme.Default))
+        }
+
+    override val isUsedCustomTheme: Boolean
+        get() = runBlocking {
+            isUseCustomThemeUseCase(Unit).successOr(false)
         }
 
     override val useCustomTheme: Flow<Boolean> =
@@ -69,7 +69,9 @@ class ThemedActivityDelegateImpl @Inject constructor(
         return if (isUseCustomTheme) {
             theme
         } else {
-            if (LocalTime.now().second % 2 == 0) {
+            val currentTime = LocalTime.now().second
+            Timber.d("Cal ${currentTime}s")
+            if ((currentTime / 15) % 2 == 0) {
                 Theme.Default
             } else {
                 Theme.DarkDefault
