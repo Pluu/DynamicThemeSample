@@ -5,11 +5,17 @@ package com.pluu.theme.sample.model
  */
 enum class Theme(val storageKey: String) {
     Yellow("yellow"),
-    Blue("Blue"),
-    BlueFromDark("Dark Blue"),
-    Purple("Purple"),
+//    Blue("Blue"),
+//    BlueFromDark("Dark Blue"),
+//    Purple("Purple"),
     PurpleFromDark("Dark Purple"),
     ;
+
+    val isLight: Boolean
+        get() = when (this) {
+            Yellow -> true
+            else -> false
+        }
 
     companion object {
         val Default = Yellow

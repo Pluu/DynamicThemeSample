@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Base" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -21,52 +21,12 @@
     <attr name="custom_color_primary_container" format="color" />
     <attr name="custom_color_on_primary_container" format="color" />
 
-    <style name="jingburger" parent="Theme.Base">
+    <style name="ColorTheme" parent="Theme.Base">
         <item name="custom_wallpaper">@drawable/jingburger</item>
         <item name="custom_color_background">#fff8f3</item>
         <item name="custom_color_primary">#7d570e</item>
         <item name="custom_color_on_primary">#ffffff</item>
         <item name="custom_color_primary_container">#ffdeae</item>
         <item name="custom_color_on_primary_container">#281800</item>
-    </style>
-
-    <style name="Pluu_Blue" parent="Theme.Base">
-        <item name="custom_wallpaper">@drawable/pluu_blue</item>
-        <item name="custom_color_background">#f8f9ff</item>
-        <item name="custom_color_primary">#36618e</item>
-        <item name="custom_color_on_primary">#ffffff</item>
-        <item name="custom_color_primary_container">#d2e4ff</item>
-        <item name="custom_color_on_primary_container">#001d36</item>
-    </style>
-
-    <style name="Pluu_Blue.Dark">
-        <item name="custom_color_background">#111418</item>
-        <item name="custom_color_primary">#a1cafd</item>
-        <item name="custom_color_on_primary">#003259</item>
-        <item name="custom_color_primary_container">#1a4975</item>
-        <item name="custom_color_on_primary_container">#d2e4ff</item>
-    </style>
-
-    <style name="Pluu_Purple" parent="Theme.Base">
-        <item name="custom_wallpaper">@drawable/pluu_purple</item>
-        <item name="custom_color_background">#fff8f8</item>
-        <item name="custom_color_primary">#884a6a</item>
-        <item name="custom_color_on_primary">#ffffff</item>
-        <item name="custom_color_primary_container">#ffd8e8</item>
-        <item name="custom_color_on_primary_container">#380725</item>
-    </style>
-
-    <style name="Pluu_Purple.Dark">
-        <item name="custom_color_background">#191114</item>
-        <item name="custom_color_primary">#fdb0d4</item>
-        <item name="custom_color_on_primary">#521d3b</item>
-        <item name="custom_color_primary_container">#6d3352</item>
-        <item name="custom_color_on_primary_container">#ffd8e8</item>
-    </style>
-
-    <!-- Base application theme. -->
-    <style name="Base.Theme.DynamicThemeSample" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 </resources>
