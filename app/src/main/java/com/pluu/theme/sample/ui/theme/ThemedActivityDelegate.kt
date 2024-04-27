@@ -26,21 +26,22 @@ import javax.inject.Singleton
 interface ThemedActivityDelegate {
     val currentTheme: Theme
     val isUsedCustomTheme: Boolean
+    fun init()
     fun refresh()
 }
 
 @Singleton
 class ThemedActivityDelegateImpl @Inject constructor(
     @ApplicationScope private val externalScope: CoroutineScope,
-    observeUseCustomThemeModeUseCase: ObserveUseCustomThemeModeUseCase,
+    private val observeUseCustomThemeModeUseCase: ObserveUseCustomThemeModeUseCase,
     private val isUseCustomThemeUseCase: GetUseCustomThemeUseCase,
-    observeThemeUseCase: ObserveThemeModeUseCase,
+    private val observeThemeUseCase: ObserveThemeModeUseCase,
     private val getThemeUseCase: GetThemeUseCase,
 ) : ThemedActivityDelegate {
 
     private val refreshSignal = MutableStateFlow(false)
 
-    init {
+    override fun init() {
         combine(
             refreshSignal,
             observeUseCustomThemeModeUseCase(Unit),

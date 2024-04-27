@@ -3,30 +3,35 @@ package com.pluu.theme.sample.ui.theme
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
 import com.pluu.theme.sample.model.Theme
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import dagger.hilt.android.EntryPointAccessors
 
 @AndroidEntryPoint
 abstract class ThemedActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var themedActivityDelegate: ThemedActivityDelegate
+    private lateinit var themedActivityDelegate: ThemedActivityDelegate
 
     protected val currentTheme: Theme
         get() = themedActivityDelegate.currentTheme
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        themedActivityDelegate = EntryPointAccessors.fromApplication(
+            this,
+            ThemedActivityDelegateInterface::class.java
+        ).getDelegate()
         initializeTheme()
+
+        super.onCreate(savedInstanceState)
     }
 
     private fun initializeTheme() {
-        val defaultNightMode = when (themedActivityDelegate.currentTheme) {
-            Theme.Light -> AppCompatDelegate.MODE_NIGHT_NO
-            Theme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
+        val defaultNightMode = if (themedActivityDelegate.currentTheme.isLight) {
+            AppCompatDelegate.MODE_NIGHT_NO
+        } else {
+            AppCompatDelegate.MODE_NIGHT_YES
         }
         AppCompatDelegate.setDefaultNightMode(defaultNightMode)
-        delegate.applyDayNight()
     }
 }

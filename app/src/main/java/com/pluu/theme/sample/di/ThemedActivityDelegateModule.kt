@@ -4,6 +4,7 @@ import com.pluu.theme.sample.ui.theme.ThemedActivityDelegate
 import com.pluu.theme.sample.ui.theme.ThemedActivityDelegateImpl
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
@@ -18,4 +19,11 @@ abstract class ThemedActivityDelegateModule {
     abstract fun provideThemedActivityDelegate(
         impl: ThemedActivityDelegateImpl
     ): ThemedActivityDelegate
+}
+
+
+@EntryPoint
+@InstallIn(SingletonComponent::class)
+interface ThemedActivityDelegateInterface {
+    fun getDelegate(): ThemedActivityDelegate
 }
