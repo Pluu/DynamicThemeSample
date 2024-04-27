@@ -9,16 +9,14 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?custom_color_background</item>
+        <item name="android:statusBarColor">@color/custom_color_background</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ColorTheme" parent="Theme.Base">
-        <item name="custom_wallpaper">@drawable/pluu_blue</item>
-        <item name="custom_color_background">#191114</item>
-        <item name="custom_color_primary">#fdb0d4</item>
-        <item name="custom_color_on_primary">#521d3b</item>
-        <item name="custom_color_primary_container">#6d3352</item>
-        <item name="custom_color_on_primary_container">#ffd8e8</item>
-    </style>
+    <drawable name="custom_wallpaper">@drawable/pluu_blue</drawable>
+    <color name="custom_color_background">#191114</color>
+    <color name="custom_color_primary">#fdb0d4</color>
+    <color name="custom_color_on_primary">#521d3b</color>
+    <color name="custom_color_primary_container">#6d3352</color>
+    <color name="custom_color_on_primary_container">#ffd8e8</color>
 </resources>

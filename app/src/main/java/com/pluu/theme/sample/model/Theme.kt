@@ -4,22 +4,19 @@ package com.pluu.theme.sample.model
  * Represents the available UI themes for the application
  */
 enum class Theme(val storageKey: String) {
-    Yellow("yellow"),
-//    Blue("Blue"),
-//    BlueFromDark("Dark Blue"),
-//    Purple("Purple"),
-    PurpleFromDark("Dark Purple"),
-    ;
+    Light("yellow"),
+    Dark("Dark Purple");
 
     val isLight: Boolean
         get() = when (this) {
-            Yellow -> true
+            Light -> true
             else -> false
         }
 
     companion object {
-        val Default = Yellow
-        val DarkDefault = PurpleFromDark
+        val Default = Light
+        val DarkDefault = Dark
+
         fun of(ordinal: Int): Theme {
             return Theme.entries[ordinal]
         }

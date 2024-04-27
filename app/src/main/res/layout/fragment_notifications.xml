@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?custom_color_background"
+    android:background="@color/custom_color_background"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="20dp"
@@ -12,10 +12,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?custom_color_primary"
+        android:background="@color/custom_color_primary"
         android:padding="8dp"
         android:text="Primary"
-        android:textColor="?custom_color_on_primary"
+        android:textColor="@color/custom_color_on_primary"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -23,10 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:background="?custom_color_primary_container"
+        android:background="@color/custom_color_primary_container"
         android:padding="8dp"
         android:text="Primary Container"
-        android:textColor="?custom_color_on_primary_container"
+        android:textColor="@color/custom_color_on_primary_container"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -35,9 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:backgroundTint="?custom_color_primary"
+        android:backgroundTint="@color/custom_color_primary"
         android:text="Change Theme"
         android:textAllCaps="false"
-        android:textColor="?custom_color_on_primary"
+        android:textColor="@color/custom_color_on_primary"
         android:textSize="20sp" />
 </LinearLayout>

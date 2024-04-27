@@ -39,7 +39,6 @@ class ThemedActivityDelegateImpl @Inject constructor(
 ) : ThemedActivityDelegate {
 
     private val refreshSignal = MutableStateFlow(false)
-    private var latestTheme: Theme? = null
 
     init {
         combine(
@@ -91,8 +90,8 @@ class ThemedActivityDelegateImpl @Inject constructor(
 
     private fun updateAppTheme(theme: Theme) {
         val defaultNightMode = when (theme) {
-            Theme.Yellow -> AppCompatDelegate.MODE_NIGHT_NO
-            Theme.PurpleFromDark -> AppCompatDelegate.MODE_NIGHT_YES
+            Theme.Light -> AppCompatDelegate.MODE_NIGHT_NO
+            Theme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
         }
         AppCompatDelegate.setDefaultNightMode(defaultNightMode)
     }

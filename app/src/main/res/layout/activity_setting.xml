@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?custom_color_background"
+    android:background="@color/custom_color_background"
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="horizontal"
@@ -16,9 +16,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Custom\nTheme"
-        android:textColor="?custom_color_primary"
+        android:textColor="@color/custom_color_primary"
         android:textSize="24sp"
-        app:drawableTint="?custom_color_on_primary_container"
+        app:drawableTint="@color/custom_color_on_primary_container"
         app:drawableTopCompat="@drawable/baseline_account_tree_24" />
 
     <TextView
@@ -28,8 +28,8 @@
         android:layout_marginStart="40dp"
         android:gravity="center"
         android:text="Theme"
-        android:textColor="?custom_color_primary"
+        android:textColor="@color/custom_color_primary"
         android:textSize="24sp"
-        app:drawableTint="?custom_color_on_primary_container"
+        app:drawableTint="@color/custom_color_on_primary_container"
         app:drawableTopCompat="@drawable/ic_dashboard_black_24dp" />
 </LinearLayout>

@@ -10,23 +10,14 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?custom_color_background</item>
+        <item name="android:statusBarColor">@color/custom_color_background</item>
         <!-- Customize your theme here. -->
     </style>
 
-    <attr name="custom_wallpaper" format="reference" />
-    <attr name="custom_color_background" format="color" />
-    <attr name="custom_color_primary" format="color" />
-    <attr name="custom_color_on_primary" format="color" />
-    <attr name="custom_color_primary_container" format="color" />
-    <attr name="custom_color_on_primary_container" format="color" />
-
-    <style name="ColorTheme" parent="Theme.Base">
-        <item name="custom_wallpaper">@drawable/jingburger</item>
-        <item name="custom_color_background">#fff8f3</item>
-        <item name="custom_color_primary">#7d570e</item>
-        <item name="custom_color_on_primary">#ffffff</item>
-        <item name="custom_color_primary_container">#ffdeae</item>
-        <item name="custom_color_on_primary_container">#281800</item>
-    </style>
+    <drawable name="custom_wallpaper">@drawable/jingburger</drawable>
+    <color name="custom_color_background">#fff8f3</color>
+    <color name="custom_color_primary">#7d570e</color>
+    <color name="custom_color_on_primary">#ffffff</color>
+    <color name="custom_color_primary_container">#ffdeae</color>
+    <color name="custom_color_on_primary_container">#281800</color>
 </resources>
