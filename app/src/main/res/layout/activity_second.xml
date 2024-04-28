@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/custom_color_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.second.SecondActivity">
+
+    <TextView
+        android:id="@+id/onlyCustomTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Sample Text"
+        android:textColor="@color/custom_color_primary"
+        android:textSize="24sp"
+        app:drawableTint="@color/custom_color_on_primary_container"
+        app:drawableTopCompat="@drawable/baseline_account_tree_24" />
+
+</LinearLayout>

@@ -1,11 +1,13 @@
 package com.pluu.theme.sample.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pluu.theme.sample.databinding.FragmentHomeBinding
+import com.pluu.theme.sample.ui.first.FirstActivity
 import com.pluu.theme.sample.ui.main.MainFragmentProvider
 import com.pluu.theme.sample.utils.showToast
 
@@ -24,6 +26,13 @@ class HomeFragment : Fragment(), MainFragmentProvider {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnGoFirst.setOnClickListener {
+            startActivity(Intent(requireContext(), FirstActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

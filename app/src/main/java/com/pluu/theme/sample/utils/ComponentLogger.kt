@@ -16,11 +16,11 @@ private const val loggerTag = "Logger"
 private inline val <T : Any> T.javaClassName: String
     get() = javaClass.name
 
-private fun Fragment.printLifecycle(lifecycleScope: String) {
+fun Fragment.printLifecycle(lifecycleScope: String) {
     Timber.tag(loggerTag).d("[Fragment] $lifecycleScope - ${javaClassName}(${hashCode()})")
 }
 
-private fun Activity.printLifecycle(lifecycleScope: String) {
+fun Activity.printLifecycle(lifecycleScope: String) {
     Timber.tag(loggerTag).d("[Activity] $lifecycleScope - ${javaClassName}(${hashCode()})")
 }
 
