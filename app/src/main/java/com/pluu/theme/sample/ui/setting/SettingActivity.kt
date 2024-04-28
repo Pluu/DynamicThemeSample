@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.pluu.theme.sample.databinding.ActivitySettingBinding
 import com.pluu.theme.sample.model.Theme
-import com.pluu.theme.sample.ui.theme.ThemedActivity
+import com.pluu.theme.sample.ui.base.ThemedActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

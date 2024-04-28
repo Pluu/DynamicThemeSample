@@ -6,7 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.pluu.theme.sample.R
 import com.pluu.theme.sample.databinding.ActivityMainBinding
-import com.pluu.theme.sample.ui.theme.ThemedActivity
+import com.pluu.theme.sample.ui.base.ThemedActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

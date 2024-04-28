@@ -2,12 +2,12 @@ package com.pluu.theme.sample.ui.light
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pluu.theme.sample.R
+import com.pluu.theme.sample.ui.base.AppBaseActivity
 
-class LightActivity : AppCompatActivity() {
+class LightActivity : AppBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

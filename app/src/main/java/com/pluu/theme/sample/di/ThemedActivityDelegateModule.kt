@@ -1,7 +1,7 @@
 package com.pluu.theme.sample.di
 
-import com.pluu.theme.sample.ui.theme.ThemedActivityDelegate
-import com.pluu.theme.sample.ui.theme.ThemedActivityDelegateImpl
+import com.pluu.theme.sample.ui.base.ThemedActivityDelegate
+import com.pluu.theme.sample.ui.base.ThemedActivityDelegateImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.EntryPoint
