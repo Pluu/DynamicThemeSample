@@ -27,11 +27,16 @@ abstract class ThemedActivity : AppCompatActivity() {
     }
 
     private fun initializeTheme() {
+        val defaultNightMode = getNightMode()
+        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
+    }
+
+    private fun getNightMode(): Int {
         val defaultNightMode = if (themedActivityDelegate.currentTheme.isLight) {
             AppCompatDelegate.MODE_NIGHT_NO
         } else {
             AppCompatDelegate.MODE_NIGHT_YES
         }
-        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
+        return defaultNightMode
     }
 }

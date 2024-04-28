@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pluu.theme.sample.databinding.FragmentNotificationsBinding
+import com.pluu.theme.sample.ui.light.LightActivity
 import com.pluu.theme.sample.ui.main.MainFragmentProvider
 import com.pluu.theme.sample.ui.setting.SettingActivity
 import com.pluu.theme.sample.utils.showToast
@@ -32,6 +33,9 @@ class NotificationsFragment : Fragment(), MainFragmentProvider {
         super.onViewCreated(view, savedInstanceState)
         binding.btnGoSetting.setOnClickListener {
             startActivity(Intent(requireContext(), SettingActivity::class.java))
+        }
+        binding.btnGoLight.setOnClickListener {
+            startActivity(Intent(requireContext(), LightActivity::class.java))
         }
     }
 

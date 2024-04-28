@@ -12,19 +12,24 @@
         android:theme="@style/Theme.Base.Light"
         tools:targetApi="31">
         <activity
-            android:name=".ui.setting.SettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Base">
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.light.LightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Base" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -34,7 +39,6 @@
             <meta-data
                 android:name="com.pluu.theme.sample.initializers.TimberInitializer"
                 android:value="androidx.startup" />
-
             <meta-data
                 android:name="com.pluu.theme.sample.initializers.LifecycleInitializer"
                 android:value="androidx.startup" />
