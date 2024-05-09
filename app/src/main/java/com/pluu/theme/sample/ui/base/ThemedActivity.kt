@@ -2,7 +2,6 @@ package com.pluu.theme.sample.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import com.pluu.theme.sample.R
 import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
 import com.pluu.theme.sample.model.Theme
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,21 +30,18 @@ abstract class ThemedActivity : AppBaseActivity() {
         initializeTheme()
     }
 
-    private fun initializeTheme(isAnimate: Boolean = false) {
+    private fun initializeTheme() {
         val defaultNightMode = getNightMode()
-        if (isAnimate && delegate.localNightMode != defaultNightMode) {
-            overridePendingTransition(R.anim.short_fade_in, R.anim.short_fade_out)
-        }
-        delegate.localNightMode = defaultNightMode
+        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
     }
 
-    override fun onRestart() {
-        initializeTheme(isAnimate = true)
-        super.onRestart()
+    override fun onResume() {
+        initializeTheme()
+        super.onResume()
     }
 
     private fun getNightMode(): Int {
-        val defaultNightMode = if (themedActivityDelegate.currentTheme.isLight) {
+        val defaultNightMode = if (currentTheme.isLight) {
             AppCompatDelegate.MODE_NIGHT_NO
         } else {
             AppCompatDelegate.MODE_NIGHT_YES
