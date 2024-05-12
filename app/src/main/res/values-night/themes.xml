@@ -11,6 +11,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/custom_color_background</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <drawable name="custom_wallpaper">@drawable/pluu_blue</drawable>

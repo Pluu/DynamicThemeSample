@@ -12,11 +12,7 @@ abstract class AppBaseActivity : AppCompatActivity {
     constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     override fun attachBaseContext(newBase: Context?) {
-        if (isForceLightTheme()) {
-            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
-        }
+        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
         super.attachBaseContext(newBase)
     }
-
-    protected open fun isForceLightTheme(): Boolean = true
 }

@@ -5,11 +5,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.pluu.theme.sample.databinding.ActivitySettingBinding
 import com.pluu.theme.sample.model.Theme
-import com.pluu.theme.sample.ui.base.ThemedActivity
+import com.pluu.theme.sample.ui.base.AppBaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingActivity : ThemedActivity() {
+class SettingActivity : AppBaseActivity() {
 
     private lateinit var binding: ActivitySettingBinding
     private val viewModel by viewModels<SettingViewModel>()
@@ -42,7 +42,7 @@ class SettingActivity : ThemedActivity() {
         AlertDialog.Builder(this)
             .setSingleChoiceItems(
                 Theme.entries.map { it.name }.toTypedArray(),
-                currentTheme.ordinal,
+                viewModel.currentTheme.ordinal,
             ) { dialogInterface, item ->
                 viewModel.setTheme(Theme.of(item))
                 dialogInterface.dismiss()
