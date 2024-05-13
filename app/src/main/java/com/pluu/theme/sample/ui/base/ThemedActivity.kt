@@ -1,7 +1,6 @@
 package com.pluu.theme.sample.ui.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
 import com.pluu.theme.sample.model.Theme
@@ -9,7 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
 @AndroidEntryPoint
-abstract class ThemedActivity : AppCompatActivity() {
+abstract class ThemedActivity : AppBaseActivity() {
 
     private lateinit var themedActivityDelegate: ThemedActivityDelegate
 
@@ -31,7 +30,7 @@ abstract class ThemedActivity : AppCompatActivity() {
 
     private fun initializeTheme() {
         val defaultNightMode = getNightMode()
-        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
+        delegate.localNightMode = defaultNightMode
     }
 
     override fun onResume() {

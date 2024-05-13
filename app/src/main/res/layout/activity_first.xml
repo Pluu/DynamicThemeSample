@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Sample Text"
-        android:textColor="@color/custom_color_primary"
+        android:textColor="?attr/colorPrimary"
         android:textSize="24sp"
         app:drawableTint="@color/custom_color_on_primary_container"
         app:drawableTopCompat="@drawable/baseline_account_tree_24" />

@@ -1,7 +1,7 @@
 <resources>
-    <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Base" parent="Theme.Material3.Dark.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">#AED581</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

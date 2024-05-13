@@ -95,6 +95,6 @@ class ThemedActivityDelegateImpl @Inject constructor(
             Theme.Light -> AppCompatDelegate.MODE_NIGHT_NO
             Theme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
         }
-        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
+//        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
     }
 }
