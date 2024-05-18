@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.pluu.theme.sample.databinding.FragmentHomeBinding
+import com.pluu.theme.sample.ui.ItemListDialogFragment
 import com.pluu.theme.sample.ui.first.FirstActivity
 import com.pluu.theme.sample.ui.main.MainFragmentProvider
 import com.pluu.theme.sample.utils.showToast
@@ -32,6 +33,10 @@ class HomeFragment : Fragment(), MainFragmentProvider {
         super.onViewCreated(view, savedInstanceState)
         binding.btnGoFirst.setOnClickListener {
             startActivity(Intent(requireContext(), FirstActivity::class.java))
+        }
+        binding.showBottomSheet.setOnClickListener {
+            ItemListDialogFragment.newInstance()
+                .show(parentFragmentManager, ItemListDialogFragment::class.simpleName)
         }
     }
 

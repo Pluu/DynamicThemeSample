@@ -1,6 +1,10 @@
 package com.pluu.theme.sample.ui.base
 
+import android.app.UiModeManager
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.getSystemService
 import com.pluu.theme.sample.di.ApplicationScope
 import com.pluu.theme.sample.domain.GetThemeUseCase
 import com.pluu.theme.sample.domain.GetUseCustomThemeUseCase
@@ -8,6 +12,7 @@ import com.pluu.theme.sample.domain.ObserveThemeModeUseCase
 import com.pluu.theme.sample.domain.ObserveUseCustomThemeModeUseCase
 import com.pluu.theme.sample.domain.result.successOr
 import com.pluu.theme.sample.model.Theme
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,15 +31,17 @@ interface ThemedActivityDelegate {
     val currentTheme: Theme
     val isUsedCustomTheme: Boolean
     fun refresh()
+    fun fetchTheme()
 }
 
 @Singleton
 class ThemedActivityDelegateImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     @ApplicationScope private val externalScope: CoroutineScope,
-    private val observeUseCustomThemeModeUseCase: ObserveUseCustomThemeModeUseCase,
     private val isUseCustomThemeUseCase: GetUseCustomThemeUseCase,
-    private val observeThemeUseCase: ObserveThemeModeUseCase,
     private val getThemeUseCase: GetThemeUseCase,
+    observeUseCustomThemeModeUseCase: ObserveUseCustomThemeModeUseCase,
+    observeThemeUseCase: ObserveThemeModeUseCase,
 ) : ThemedActivityDelegate {
 
     private val refreshSignal = MutableStateFlow(false)
@@ -50,8 +57,8 @@ class ThemedActivityDelegateImpl @Inject constructor(
                 currentTheme.successOr(Theme.Default)
             )
         }.distinctUntilChanged()
-            .onEach {
-                updateAppTheme(it)
+            .onEach { theme ->
+//                updateAppTheme(context, theme)
             }.launchIn(externalScope + Dispatchers.Main.immediate)
     }
 
@@ -72,10 +79,6 @@ class ThemedActivityDelegateImpl @Inject constructor(
         refreshSignal.tryEmit(refreshSignal.value.not())
     }
 
-//    private fun findTheme(isUseCustomTheme: Result<Boolean>, theme: Result<Theme>): Theme {
-//        return findTheme(isUseCustomTheme.successOr(false), theme.successOr(Theme.Default))
-//    }
-
     private fun findTheme(isUseCustomTheme: Boolean, theme: Theme): Theme {
         return if (isUseCustomTheme) {
             theme
@@ -90,11 +93,26 @@ class ThemedActivityDelegateImpl @Inject constructor(
         }
     }
 
-    private fun updateAppTheme(theme: Theme) {
-        val defaultNightMode = when (theme) {
-            Theme.Light -> AppCompatDelegate.MODE_NIGHT_NO
-            Theme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
+    override fun fetchTheme() {
+        updateAppTheme(context, currentTheme)
+    }
+
+    private fun updateAppTheme(context: Context, theme: Theme) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            val uiModeManager = context.getSystemService<UiModeManager>()!!
+            uiModeManager.setApplicationNightMode(
+                when (theme) {
+                    Theme.Light -> UiModeManager.MODE_NIGHT_NO
+                    Theme.Dark -> UiModeManager.MODE_NIGHT_YES
+                }
+            )
+        } else {
+            AppCompatDelegate.setDefaultNightMode(
+                when (theme) {
+                    Theme.Light -> AppCompatDelegate.MODE_NIGHT_NO
+                    Theme.Dark -> AppCompatDelegate.MODE_NIGHT_YES
+                }
+            )
         }
-//        AppCompatDelegate.setDefaultNightMode(defaultNightMode)
     }
 }

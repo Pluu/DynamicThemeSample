@@ -1,10 +1,7 @@
 package com.pluu.theme.sample.ui.base
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
-import com.pluu.theme.sample.R
 import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
-import com.pluu.theme.sample.model.Theme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -12,9 +9,6 @@ import dagger.hilt.android.EntryPointAccessors
 abstract class ThemedActivity : AppBaseActivity() {
 
     private lateinit var themedActivityDelegate: ThemedActivityDelegate
-
-    protected val currentTheme: Theme
-        get() = themedActivityDelegate.currentTheme
 
     private var updateThemeTranslation = false
 
@@ -33,29 +27,12 @@ abstract class ThemedActivity : AppBaseActivity() {
     }
 
     private fun initializeTheme() {
-        val defaultNightMode = getNightMode()
-        delegate.localNightMode = defaultNightMode
+        themedActivityDelegate.fetchTheme()
     }
 
     override fun onResume() {
         super.onResume()
         updateThemeTranslation = true
         initializeTheme()
-    }
-
-    override fun onNightModeChanged(mode: Int) {
-        super.onNightModeChanged(mode)
-        if (updateThemeTranslation) {
-            overridePendingTransition(R.anim.short_fade_in, R.anim.short_fade_out)
-        }
-    }
-
-    private fun getNightMode(): Int {
-        val defaultNightMode = if (currentTheme.isLight) {
-            AppCompatDelegate.MODE_NIGHT_NO
-        } else {
-            AppCompatDelegate.MODE_NIGHT_YES
-        }
-        return defaultNightMode
     }
 }

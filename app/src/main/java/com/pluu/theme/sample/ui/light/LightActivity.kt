@@ -1,10 +1,12 @@
 package com.pluu.theme.sample.ui.light
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pluu.theme.sample.R
+import com.pluu.theme.sample.ui.ItemListDialogFragment
 import com.pluu.theme.sample.ui.base.AppBaseActivity
 
 class LightActivity : AppBaseActivity() {
@@ -16,6 +18,11 @@ class LightActivity : AppBaseActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        findViewById<View>(R.id.showBottomSheet).setOnClickListener {
+            ItemListDialogFragment.newInstance()
+                .show(supportFragmentManager, ItemListDialogFragment::class.java.simpleName)
         }
     }
 }
