@@ -1,6 +1,7 @@
 package com.pluu.theme.sample.ui.base
 
-import android.os.Bundle
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
@@ -10,29 +11,33 @@ abstract class ThemedActivity : AppBaseActivity() {
 
     private lateinit var themedActivityDelegate: ThemedActivityDelegate
 
-    private var updateThemeTranslation = false
+    override fun isForceLightTheme(): Boolean = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        updateThemeTranslation = false
-        initDelegate()
-        super.onCreate(savedInstanceState)
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            initDelegate(newBase)
+        }
+        super.attachBaseContext(newBase)
     }
 
-    private fun initDelegate() {
+    private fun initDelegate(newBase: Context) {
         themedActivityDelegate = EntryPointAccessors.fromApplication(
-            this,
+            newBase,
             ThemedActivityDelegateInterface::class.java
         ).getDelegate()
         initializeTheme()
     }
 
     private fun initializeTheme() {
-        themedActivityDelegate.fetchTheme()
+        delegate.localNightMode = if (themedActivityDelegate.currentTheme.isLight) {
+            AppCompatDelegate.MODE_NIGHT_NO
+        } else {
+            AppCompatDelegate.MODE_NIGHT_YES
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        updateThemeTranslation = true
+    override fun onStart() {
+        super.onStart()
         initializeTheme()
     }
 }
