@@ -29,11 +29,13 @@ abstract class ThemedActivity : AppBaseActivity() {
     }
 
     private fun initializeTheme() {
-        delegate.localNightMode = if (themedActivityDelegate.currentTheme.isLight) {
-            AppCompatDelegate.MODE_NIGHT_NO
-        } else {
-            AppCompatDelegate.MODE_NIGHT_YES
-        }
+        AppCompatDelegate.setDefaultNightMode(
+            if (themedActivityDelegate.currentTheme.isLight) {
+                AppCompatDelegate.MODE_NIGHT_NO
+            } else {
+                AppCompatDelegate.MODE_NIGHT_YES
+            }
+        )
     }
 
     override fun onStart() {
