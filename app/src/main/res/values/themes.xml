@@ -63,6 +63,17 @@
         <item name="android:statusBarColor">@color/custom_color_background</item>
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowAnimationStyle">@style/MyAnimation</item>
+    </style>
+
+    <style name="MyAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+<!--        <item name="android:activityOpenEnterAnimation">@android:anim/fade_in</item>-->
+<!--        <item name="android:activityOpenExitAnimation">@android:anim/fade_out</item>-->
+<!--        <item name="android:activityCloseEnterAnimation">@android:anim/fade_in</item>-->
+<!--        <item name="android:activityCloseExitAnimation">@android:anim/fade_out</item>-->
+
     </style>
 
     <drawable name="custom_wallpaper">@drawable/jingburger</drawable>

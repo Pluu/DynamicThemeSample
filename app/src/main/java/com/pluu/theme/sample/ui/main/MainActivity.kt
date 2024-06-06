@@ -7,7 +7,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.pluu.theme.sample.R
 import com.pluu.theme.sample.databinding.ActivityMainBinding
 import com.pluu.theme.sample.ui.base.ThemedActivity
-import com.pluu.theme.sample.utils.printLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +37,6 @@ class MainActivity : ThemedActivity() {
 
     override fun onRestart() {
         super.onRestart()
-        printLifecycle("onRestart")
         (findVisibleFragment() as? MainFragmentProvider)?.onRestart()
     }
 

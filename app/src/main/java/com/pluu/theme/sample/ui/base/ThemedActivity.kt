@@ -3,6 +3,7 @@ package com.pluu.theme.sample.ui.base
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import com.pluu.theme.sample.di.ThemedActivityDelegateInterface
+import com.pluu.theme.sample.utils.printLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 
@@ -38,8 +39,9 @@ abstract class ThemedActivity : AppBaseActivity() {
         )
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onRestart() {
+        super.onRestart()
+        printLifecycle("onRestart")
         initializeTheme()
     }
 }
