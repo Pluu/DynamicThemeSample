@@ -63,7 +63,11 @@
         <item name="android:statusBarColor">@color/custom_color_background</item>
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Base.DayNight">
         <item name="android:windowAnimationStyle">@style/MyAnimation</item>
+<!--        <item name="android:windowDisablePreview">true</item>-->
     </style>
 
     <style name="MyAnimation">

@@ -29,15 +29,15 @@
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.Base" />
+            android:theme="@style/Theme.Base.DayNight" />
         <activity
             android:name=".ui.first.FirstActivity"
             android:exported="false"
-            android:theme="@style/Theme.Base" />
+            android:theme="@style/Theme.Base.DayNight" />
         <activity
             android:name=".ui.second.SecondActivity"
             android:exported="false"
-            android:theme="@style/Theme.Base" />
+            android:theme="@style/Theme.Base.DayNight" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
