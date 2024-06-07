@@ -22,6 +22,10 @@ class MainActivity : ThemedActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener { _, d, _ ->
+            // Update destination
+            prefetch()
+        }
 
         binding.navView.setupWithNavController(navController)
         binding.navView.setOnItemReselectedListener { item ->

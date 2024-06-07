@@ -39,6 +39,10 @@ abstract class ThemedActivity : AppBaseActivity() {
         )
     }
 
+    protected fun prefetch() {
+        initializeTheme()
+    }
+
     override fun onRestart() {
         super.onRestart()
         printLifecycle("onRestart")
